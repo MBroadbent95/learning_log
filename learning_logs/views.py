@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.http import Http404
+from django.core.exceptions import PermissionDenied
+
 
 from .models import Topic, Entry
 from .forms import TopicForm, EntryForm
@@ -13,12 +14,10 @@ def index(request):
     return render(request, "learning_logs/index.html")
 
 
-def check_topic_owner(user, topic_id):
+def check_topic_owner(user, topic):
     """Ensure the topic belongs to the current user."""
-    topic = Topic.objects.get(id=topic_id)
     if topic.owner != user:
-        raise Http404
-    return topic
+        raise PermissionDenied
 
 
 @login_required
@@ -33,11 +32,8 @@ def topics(request):
 @login_required
 def topic(request, topic_id):
     """Show a single topic and all its entries."""
-    # topic = Topic.objects.get(id=topic_id)
-    # Make sure the topic belongs to the current user.
-    # if topic.owner != request.user:
-    #     raise Http404
-    topic = check_topic_owner(request.user, topic_id)
+    topic = get_object_or_404(Topic, id=topic_id)
+    check_topic_owner(request.user, topic_id)
     entries = topic.entry_set.order_by("-date_added")
     context = {"topic": topic, "entries": entries}
     return render(request, "learning_logs/topic.html", context)
