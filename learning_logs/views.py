@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
+from django.http import Http404
 
 
 from .models import Topic, Entry
@@ -17,7 +18,8 @@ def index(request):
 def check_topic_owner(user, topic):
     """Ensure the topic belongs to the current user."""
     if topic.owner != user:
-        raise PermissionDenied
+        raise Http404
+    return topic
 
 
 @login_required
@@ -33,7 +35,7 @@ def topics(request):
 def topic(request, topic_id):
     """Show a single topic and all its entries."""
     topic = get_object_or_404(Topic, id=topic_id)
-    check_topic_owner(request.user, topic_id)
+    check_topic_owner(request.user, topic)
     entries = topic.entry_set.order_by("-date_added")
     context = {"topic": topic, "entries": entries}
     return render(request, "learning_logs/topic.html", context)
@@ -64,7 +66,8 @@ def new_topic(request):
 def new_entry(request, topic_id):
     """Add a new entry for a particular topic."""
     # topic = Topic.objects.get(id=topic_id)
-    topic = check_topic_owner(request.user, topic_id)
+    topic = get_object_or_404(Topic, id=topic_id)
+    check_topic_owner(request.user, topic)
 
     if request.method != "POST":
         # No data submitted; create a blank form.
@@ -86,12 +89,13 @@ def new_entry(request, topic_id):
 @login_required
 def edit_entry(request, entry_id):
     """Edit an existing entry."""
-    entry = Entry.objects.get(id=entry_id)
+    # entry = Entry.objects.get(id=entry_id)
+    entry = get_object_or_404(Entry, id=entry_id)
     # topic = entry.topic
 
     # if topic.owner != request.user:
     #     raise Http404
-    topic = check_topic_owner(request.user, entry.topic_id)
+    topic = check_topic_owner(request.user, entry.topic)
 
     if request.method != "POST":
         # Initial request; pre-fill form with the current entry.
