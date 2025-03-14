@@ -19,30 +19,30 @@ sqlparse==0.5.1
 typing_extensions==4.12.2
 tzdata==2024.2
 
-Features – Key functionalities and highlights of the project.
+Features – 
 A user can sign in or register if not already, create a topic, and then contribute entries to that topic much like a diary.
 As a user, you are free to view and edit your topics/ and entries exclusively. 
 You cannot see other peoples topics and should you attempt to be cheeky and bypass this by adjusting the url, it will deny your access.
 A user can currently create an unlimited number of topics and entries.
 
-Configuration – (If applicable) Details on environment variables, settings, etc.
+Configuration – 
 This project does require virtual environments to be running from 2 terminals. I used Git Bash for my local server, and then the terminal inside of my vscode. You will need to activate both environments to begin development and see the project in action.
 The command I used was as follows, keep in mind I used Windows, when you are in the project directory- source ll_env/Scripts/Activate. And then on one of your terminals, python manage.py runserver - this should start a  development server on yoir local port, usually 8000, on your preferred browser, type in http://localhost:8000/ - if the server is up and running ccorrectly, this should show you teh landing page.
 
-Screenshots – (If applicable) Visual aids to demonstrate functionality.
 
 
-Technologies Used – List of frameworks, libraries, or languages used.
+Technologies Used – 
 This project utilised the following technologies:
 - Python
 - Django
 - Bootstrap4
   
-Known Issues / Bugs – Any existing problems or limitations.
-Deployment was a wild ride, lots of problems flagged up and made themselves known. The main error was in the views.py file, the way that the program checked the user needed adjustment. The previous code resulted in an int being passed when an object was expected. Here is the previous code, and here is the newly corrected code:
+Known Issues / Bugs – 
+The main error was in the views.py file, the way that the program checked the user needed adjustment. The previous code resulted in an int being passed when an object was expected. Here is the previous code, and here is the newly corrected code:
 Screenshot of bad code
+![Screenshot of Failing code]()
 
-Screenshot of correct code
+![Screenshot of correct code]()
 
 Roadmap – Planned future improvements. 
 Possible improvements could be:
