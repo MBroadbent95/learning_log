@@ -1,10 +1,12 @@
 # Learning Log
 
 Project Title – Learning_Log
-Description – 
+Description –
 This was my final project following the Python Crash Course 3rd edition by Eric Matthes.
 This project involved the development of an app, using Python and Django, to be accessable by the internet.
 At it's core, the project is an online diary.
+
+![Screenshot of home page](.//images/ll_homepage.jpg)
 
 Installation – Steps to install and set up the project.
 This project will require you to use Python & Django.
@@ -25,6 +27,8 @@ A user can sign in or register if not already, create a topic, and then contribu
 As a user, you are free to view and edit your topics/ and entries exclusively.
 You cannot see other peoples topics and should you attempt to be cheeky and bypass this by adjusting the url, it will deny your access.
 A user can currently create an unlimited number of topics and entries.
+
+![Screenshot of Topics page](.//images/ll_topicpage.jpg)
 
 Configuration –
 This project does require virtual environments to be running from 2 terminals. I used Git Bash for my local server, and then the terminal inside of my vscode. You will need to activate both environments to begin development and see the project in action.
