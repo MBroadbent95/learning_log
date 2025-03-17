@@ -1,8 +1,8 @@
 # Learning Log
 
 Project Title – Learning_Log
-Description – A brief overview of what the project does.
-This was my final project following the Python Crash Course by Eric Matthes.
+Description – 
+This was my final project following the Python Crash Course 3rd edition by Eric Matthes.
 This project involved the development of an app, using Python and Django, to be accessable by the internet.
 At it's core, the project is an online diary.
 
@@ -28,7 +28,7 @@ A user can currently create an unlimited number of topics and entries.
 
 Configuration –
 This project does require virtual environments to be running from 2 terminals. I used Git Bash for my local server, and then the terminal inside of my vscode. You will need to activate both environments to begin development and see the project in action.
-The command I used was as follows, keep in mind I used Windows, when you are in the project directory- source ll_env/Scripts/Activate. And then on one of your terminals, python manage.py runserver - this should start a development server on yoir local port, usually 8000, on your preferred browser, type in http://localhost:8000/ - if the server is up and running ccorrectly, this should show you teh landing page.
+The command I used was as follows, keep in mind I that use Windows, when you are in the project directory- source ll_env/Scripts/Activate. And then on one of your terminals, python manage.py runserver - this should start a development server on yoir local port, usually 8000, on your preferred browser, type in http://localhost:8000/ - if the server is up and running ccorrectly, this should show you teh landing page.
 
 Technologies Used –
 This project utilised the following technologies:
